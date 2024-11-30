@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cicada</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: red;
+      font-family: 'Courier New', Courier, monospace;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 4rem;
+      text-align: center;
+      margin-top: 20%;
+      text-shadow: 0 0 10px red, 0 0 20px crimson;
+      animation: flicker 1.5s infinite alternate;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-top: 20px;
+      color: gray;
+      animation: fade-in 4s ease-in-out;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.8; }
+      100% { opacity: 0.5; }
+    }
+
+    @keyframes fade-in {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    .static {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/static-noise.png');
+      opacity: 0.05;
+      animation: noise 0.2s infinite;
+    }
+
+    @keyframes noise {
+      0% { opacity: 0.05; }
+      50% { opacity: 0.1; }
+      100% { opacity: 0.05; }
+    }
+  </style>
+</head>
+<body>
+  <div class="static"></div>
+  <h1>Cicada 3301</h1>
+  <p>Are you ready to solve the mystery?</p>
+  
+  <!-- الصوت المخيف -->
+  <audio id="scary-audio" loop>
+    <source src="May Roosevelt (Slowed Reverb) _AVmusic _foryou _hedphones _hedphones _Aveerplayer _Music _medo _thissong _terror(MP3).mp3" type="audio/mp3">
+    Your browser does not support the audio tag.
+  </audio>
+
+  <script>
+    // تشغيل الصوت تلقائيًا عند فتح الموقع
+    const audio = document.getElementById('scary-audio');
+    window.addEventListener('load', () => {
+      audio.play().catch(() => {
+        console.log("Autoplay blocked by browser. Click anywhere to play.");
+        document.body.addEventListener('click', () => {
+          audio.play();
+        });
+      });
+    });
+  </script>
+</body>
+</html>
